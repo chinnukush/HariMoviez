@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preparing Your Download...</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+background:#090909;
+position:relative;
+}
+
+/* Gold Background Glow */
+
+body::before{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+background:#FFD700;
+filter:blur(180px);
+top:-180px;
+left:-180px;
+opacity:.18;
+}
+
+body::after{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+background:#B8860B;
+filter:blur(180px);
+bottom:-180px;
+right:-180px;
+opacity:.15;
+}
+
+/* Card */
+
+.card{
+width:380px;
+padding:35px;
+background:rgba(20,20,20,.92);
+border:1px solid rgba(255,215,0,.18);
+border-radius:24px;
+backdrop-filter:blur(15px);
+box-shadow:
+0 0 35px rgba(255,215,0,.08),
+0 15px 40px rgba(0,0,0,.6);
+text-align:center;
+animation:fade .7s ease;
+}
+
+/* Premium Timer */
+
+.timer-ring{
+width:130px;
+height:130px;
+margin:auto;
+padding:7px;
+border-radius:50%;
+background:linear-gradient(135deg,#FFF3B0,#FFD700,#CFAF32,#B8860B);
+background-size:300% 300%;
+animation:ring 4s linear infinite;
+box-shadow:0 0 30px rgba(255,215,0,.35);
+}
+
+.timer-inner{
+width:100%;
+height:100%;
+border-radius:50%;
+background:#101010;
+display:flex;
+align-items:center;
+justify-content:center;
+border:4px solid rgba(255,255,255,.05);
+}
+
+#timer{
+font-size:50px;
+font-weight:700;
+color:#FFD700;
+text-shadow:0 0 12px rgba(255,215,0,.5);
+}
+
+/* Logo */
+
+.logo{
+margin-top:20px;
+font-size:30px;
+font-weight:700;
+letter-spacing:3px;
+color:#FFD700;
+text-shadow:0 0 12px rgba(255,215,0,.3);
+}
+
+/* Heading */
+
+h2{
+margin-top:18px;
+font-size:25px;
+color:#fff;
+}
+
+p{
+margin-top:10px;
+color:#c8c8c8;
+line-height:25px;
+font-size:15px;
+}
+
+/* Progress */
+
+.progress{
+margin-top:25px;
+height:8px;
+background:#2a2a2a;
+border-radius:30px;
+overflow:hidden;
+}
+
+.progress div{
+height:100%;
+background:linear-gradient(90deg,#FFF3B0,#FFD700,#B8860B);
+animation:loading 5s linear forwards;
+}
+
+/* Status */
+
+.status{
+margin-top:18px;
+font-size:14px;
+color:#d9d9d9;
+}
+
+#sec{
+color:#FFD700;
+font-weight:700;
+}
+
+/* VIP Badge */
+
+.bot{
+margin-top:20px;
+display:inline-block;
+padding:11px 22px;
+border-radius:50px;
+background:rgba(255,215,0,.08);
+border:1px solid rgba(255,215,0,.18);
+color:#FFD700;
+font-weight:600;
+}
+
+/* Button */
+
+button{
+width:100%;
+margin-top:28px;
+padding:15px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(135deg,#FFF3B0,#FFD700,#B8860B);
+color:#111;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px rgba(255,215,0,.4);
+}
+
+/* Animations */
+
+@keyframes loading{
+from{width:100%;}
+to{width:0;}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes ring{
+0%{
+background-position:0% 50%;
+transform:rotate(0deg);
+}
+100%{
+background-position:100% 50%;
+transform:rotate(360deg);
+}
+}
+
+@media(max-width:420px){
+
+.card{
+width:92%;
+padding:28px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.timer-ring{
+width:110px;
+height:110px;
+}
+
+#timer{
+font-size:42px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="timer-ring">
+<div class="timer-inner">
+<span id="timer">5</span>
+</div>
+</div>
+
+<div class="logo">
+⚡ ғᴀsᴛ • sᴇᴄᴜʀᴇ • ᴘʀɪᴠᴀᴛᴇ ⚡
+</div>
+
+<h2>Preparing Your Download</h2>
+
+<p>
+Please wait while we generate your secure VIP download link.
+</p>
+
+<div class="progress">
+<div></div>
+</div>
+
+<div class="status">
+Redirecting in <span id="sec">5</span> seconds...
+</div>
+
+<div class="bot">
+⭐ ᴠɪᴘ • ʜᴋ ғꜱ ʙᴏᴛ ᴠ𝟸
+</div>
+
+<button onclick="closePage()">
+Close Page
+</button>
+
+</div>
+
+<script>
+
+function closePage(){
+window.close();
+}
+
+const params=new URLSearchParams(window.location.search);
+const redirect=params.get("redirect");
+
+let count=5;
+
+const interval=setInterval(()=>{
+
+count--;
+
+document.getElementById("timer").textContent=count;
+document.getElementById("sec").textContent=count;
+
+if(count<=0){
+
+clearInterval(interval);
+
+if(redirect){
+window.location.href=decodeURIComponent(redirect);
+}
+
+}
+
+},1000);
+
+</script>
+
+</body>
+  </html>

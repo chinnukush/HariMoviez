@@ -79,7 +79,6 @@ body::after {
     align-items: center;
 }
 
-/* Outer Pulsing Glow Ring */
 .timer-container::before {
     content: '';
     position: absolute;
@@ -89,7 +88,6 @@ body::after {
     animation: pulse 2s ease-in-out infinite alternate;
 }
 
-/* Rotating Gradient Ring Arc */
 .timer-ring {
     position: absolute;
     inset: 0;
@@ -103,7 +101,6 @@ body::after {
     filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
-/* Inner Solid Core */
 .timer-inner {
     width: 106px;
     height: 106px;
@@ -212,48 +209,60 @@ h2 {
 const params = new URLSearchParams(window.location.search);
 const redirect = params.get("redirect");
 
-// Step 1: 1–3s "Checking connection..."
-let step1Time = 3;
-const step1Interval = setInterval(() => {
-    step1Time--;
+let activeInterval = null;
+
+// Step 1: "Checking connection..." (3 seconds)
+function startStep1() {
+    let step1Time = 3;
     document.getElementById("timer").textContent = step1Time;
     
-    if (step1Time <= 0) {
-        clearInterval(step1Interval);
-        startStep2();
-    }
-}, 1000);
+    if (activeInterval) clearInterval(activeInterval);
 
-// Step 2: "Verifying human..."
+    activeInterval = setInterval(() => {
+        step1Time--;
+        document.getElementById("timer").textContent = step1Time;
+        
+        if (step1Time <= 0) {
+            clearInterval(activeInterval);
+            startStep2();
+        }
+    }, 1000);
+}
+
+// Step 2: "Verifying human..." (3 seconds)
 function startStep2() {
     document.getElementById("status-text").textContent = "Verifying human...";
     let step2Time = 3; 
     document.getElementById("timer").textContent = step2Time;
 
-    const step2Interval = setInterval(() => {
+    if (activeInterval) clearInterval(activeInterval);
+
+    activeInterval = setInterval(() => {
         step2Time--;
         document.getElementById("timer").textContent = step2Time;
 
         if (step2Time <= 0) {
-            clearInterval(step2Interval);
+            clearInterval(activeInterval);
             startFinalRedirectCountdown();
         }
     }, 1000);
 }
 
-// Step 3: "Redirecting..." -> Automatically forwards to original link
+// Step 3: "Redirecting..." -> Forwards to original link
 function startFinalRedirectCountdown() {
-    let finalSeconds = Math.floor(Math.random() * 4) + 7; // Random 7 to 10 seconds wait before final redirect
+    let finalSeconds = 5; // Set fixed countdown seconds (or change back to random if preferred)
     
     document.getElementById("status-text").textContent = "Redirecting...";
     document.getElementById("timer").textContent = finalSeconds;
 
-    const redirectInterval = setInterval(() => {
+    if (activeInterval) clearInterval(activeInterval);
+
+    activeInterval = setInterval(() => {
         finalSeconds--;
         document.getElementById("timer").textContent = finalSeconds;
 
         if (finalSeconds <= 0) {
-            clearInterval(redirectInterval);
+            clearInterval(activeInterval);
             if (redirect) {
                 window.location.href = decodeURIComponent(redirect);
             } else {
@@ -262,6 +271,9 @@ function startFinalRedirectCountdown() {
         }
     }, 1000);
 }
+
+// Run the first step when the page loads
+startStep1();
 </script>
 </body>
 </html>

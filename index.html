@@ -190,7 +190,7 @@ h2 {
     <div class="timer-container">
         <div class="timer-ring"></div>
         <div class="timer-inner">
-            <span id="timer">3</span>
+            <span id="timer">5</span>
         </div>
     </div>
 
@@ -198,7 +198,7 @@ h2 {
 
     <h2 id="main-heading">Security Verification</h2>
 
-    <div class="status" id="status-text">Checking connection...</div>
+    <div class="status" id="status-text">Redirecting in progress...</div>
 
     <div class="bot">
         ⚡ Hari Moviez
@@ -209,71 +209,26 @@ h2 {
 const params = new URLSearchParams(window.location.search);
 const redirect = params.get("redirect");
 
-let activeInterval = null;
+// Direct 5-second countdown timer
+let timeLeft = 5;
+const timerElement = document.getElementById("timer");
+const statusElement = document.getElementById("status-text");
 
-// Step 1: "Checking connection..." (3 seconds)
-function startStep1() {
-    let step1Time = 3;
-    document.getElementById("timer").textContent = step1Time;
-    
-    if (activeInterval) clearInterval(activeInterval);
+timerElement.textContent = timeLeft;
 
-    activeInterval = setInterval(() => {
-        step1Time--;
-        document.getElementById("timer").textContent = step1Time;
-        
-        if (step1Time <= 0) {
-            clearInterval(activeInterval);
-            startStep2();
+const countdownInterval = setInterval(() => {
+    timeLeft--;
+    timerElement.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+        clearInterval(countdownInterval);
+        if (redirect) {
+            window.location.href = decodeURIComponent(redirect);
+        } else {
+            statusElement.textContent = "No redirect link found!";
         }
-    }, 1000);
-}
-
-// Step 2: "Verifying human..." (3 seconds)
-function startStep2() {
-    document.getElementById("status-text").textContent = "Verifying human...";
-    let step2Time = 3; 
-    document.getElementById("timer").textContent = step2Time;
-
-    if (activeInterval) clearInterval(activeInterval);
-
-    activeInterval = setInterval(() => {
-        step2Time--;
-        document.getElementById("timer").textContent = step2Time;
-
-        if (step2Time <= 0) {
-            clearInterval(activeInterval);
-            startFinalRedirectCountdown();
-        }
-    }, 1000);
-}
-
-// Step 3: "Redirecting..." -> Forwards to original link
-function startFinalRedirectCountdown() {
-    let finalSeconds = 5; // Set fixed countdown seconds (or change back to random if preferred)
-    
-    document.getElementById("status-text").textContent = "Redirecting...";
-    document.getElementById("timer").textContent = finalSeconds;
-
-    if (activeInterval) clearInterval(activeInterval);
-
-    activeInterval = setInterval(() => {
-        finalSeconds--;
-        document.getElementById("timer").textContent = finalSeconds;
-
-        if (finalSeconds <= 0) {
-            clearInterval(activeInterval);
-            if (redirect) {
-                window.location.href = decodeURIComponent(redirect);
-            } else {
-                document.getElementById("status-text").textContent = "No redirect link found!";
-            }
-        }
-    }, 1000);
-}
-
-// Run the first step when the page loads
-startStep1();
+    }
+}, 1000);
 </script>
 </body>
 </html>

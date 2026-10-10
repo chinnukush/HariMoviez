@@ -206,7 +206,7 @@ h2 {
         </div>
     </div>
 
-    <div class="logo">ʜᴀʀɪ ᴍᴏᴠɪᴇZ</div>
+    <div class="logo">ʜᴀʀɪ ᴍᴏᴠɪᴇᴢ</div>
     <h2 id="main-heading">Security Verification</h2>
     <div class="status" id="status-text">Redirecting in 5 seconds...</div>
 
@@ -222,6 +222,13 @@ h2 {
 
 <script>
 window.addEventListener("DOMContentLoaded", () => {
+    // --- SERVICE WORKER REGISTRATION ---
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(err => {
+            console.log('SW registration failed: ', err);
+        });
+    }
+
     // --- BYPASS PROTECTION CHECK ---
     const isAuthorized = sessionStorage.getItem("authorized_access");
 

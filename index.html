@@ -4,7 +4,7 @@
 <script>(function(s){s.dataset.zone='11456473',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Preparing Your Download...</title>
+<title>Secure Verification | Hari Moviez</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -21,71 +21,64 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #050505, #121212, #1c1917);
+    background: #050505;
+    background: radial-gradient(circle at center, #14120f 0%, #050505 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* Ambient Background Glows */
+/* Luxurious Black & Gold Ambient Glow Orbs */
 body::before {
     content: "";
     position: absolute;
-    width: 450px;
-    height: 450px;
+    width: 480px;
+    height: 480px;
     background: #FFD700;
     border-radius: 50%;
-    filter: blur(200px);
-    top: -180px;
-    left: -180px;
+    filter: blur(160px);
+    top: -150px;
+    left: -150px;
     opacity: 0.12;
-    animation: float1 8s ease-in-out infinite;
+    animation: floatOrb1 7s ease-in-out infinite alternate;
 }
 
 body::after {
     content: "";
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 480px;
+    height: 480px;
     background: #D4AF37;
     border-radius: 50%;
-    filter: blur(200px);
-    bottom: -180px;
-    right: -180px;
-    opacity: 0.12;
-    animation: float2 8s ease-in-out infinite;
+    filter: blur(160px);
+    bottom: -150px;
+    right: -150px;
+    opacity: 0.10;
+    animation: floatOrb2 7s ease-in-out infinite alternate;
 }
 
 .card {
     position: relative;
     z-index: 5;
-    width: 380px;
-    background: rgba(18, 18, 18, 0.95);
+    width: 410px;
+    background: rgba(15, 15, 15, 0.75);
     border: 1px solid rgba(212, 175, 55, 0.25);
-    backdrop-filter: blur(20px);
-    padding: 35px;
-    border-radius: 28px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 40px 30px;
+    border-radius: 32px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 215, 0, 0.15);
 }
 
 /* ================= TIMER STYLE ================= */
 .timer-container {
     position: relative;
-    width: 130px;
-    height: 130px;
-    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.timer-container::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
-    animation: pulse 2s ease-in-out infinite alternate;
 }
 
 .timer-ring {
@@ -93,142 +86,242 @@ body::after {
     inset: 0;
     border-radius: 50%;
     padding: 3px;
-    background: conic-gradient(from 0deg, #FFD700, #D4AF37, transparent 60%, #FFD700);
+    background: conic-gradient(from 0deg, #FFD700, #D4AF37, rgba(212, 175, 55, 0.1), #FFD700);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: spin 2.5s linear infinite;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+    animation: spin 3s linear infinite;
 }
 
 .timer-inner {
-    width: 106px;
-    height: 106px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #181818, #080808);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
-    z-index: 2;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
 }
 
 #timer {
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 700;
-    background: linear-gradient(180deg, #FFFFFF, #FFD700, #D4AF37);
+    background: linear-gradient(180deg, #FFFFFF, #FFD700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 /* =================================================== */
 
 .logo {
-    margin-top: 20px;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     background: linear-gradient(135deg, #FFF, #FFD700, #D4AF37);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
 }
 
 h2 {
-    margin-top: 10px;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .status {
-    margin-top: 14px;
-    color: #D4AF37;
-    font-size: 15px;
-    font-weight: 500;
+    color: #e6dfc2;
+    font-size: 14px;
+    font-weight: 400;
     min-height: 24px;
+    margin-bottom: 20px;
 }
 
-.bot {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 50px;
-    background: rgba(255, 215, 0, 0.08);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #D4AF37, #FFD700);
+    transform-origin: left;
+    transition: transform 1s linear;
+}
+
+.features-badge {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255, 215, 0, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     color: #FFD700;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 500;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
 }
 
 @keyframes spin {
     100% { transform: rotate(360deg); }
 }
 
-@keyframes pulse {
-    0% { transform: scale(0.96); opacity: 0.5; }
-    100% { transform: scale(1.04); opacity: 0.9; }
+@keyframes floatOrb1 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(35px, 35px); }
 }
 
-@keyframes float1 {
-    50% { transform: translate(40px, 20px); }
-}
-
-@keyframes float2 {
-    50% { transform: translate(-40px, -20px); }
+@keyframes floatOrb2 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-35px, -35px); }
 }
 
 @media(max-width: 430px) {
-    .card { width: 92%; padding: 25px; }
+    .card { width: 90%; padding: 30px 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <div class="timer-container">
+<div class="card" id="content-card">
+    <div class="timer-container" id="timer-box">
         <div class="timer-ring"></div>
         <div class="timer-inner">
             <span id="timer">5</span>
         </div>
     </div>
 
-    <div class="logo">ʜᴀʀɪ ᴍᴏᴠɪᴇᴢ</div>
-
+    <div class="logo">ʜᴀʀɪ ᴍᴏᴠɪᴇZ</div>
     <h2 id="main-heading">Security Verification</h2>
+    <div class="status" id="status-text">Redirecting in 5 seconds...</div>
 
-    <div class="status" id="status-text">Redirecting in progress...</div>
+    <div class="progress-bar-container" id="progress-box">
+        <div class="progress-bar" id="progress"></div>
+    </div>
 
-    <div class="bot">
-        ⚡ Hari Moviez
+    <div class="features-badge" id="badge-box">
+        <span class="badge">🛡️ Protected Link</span>
+        <span class="badge">⚡ Anti-Bypass Guard</span>
     </div>
 </div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const redirect = params.get("redirect");
+window.addEventListener("DOMContentLoaded", () => {
+    // --- BYPASS PROTECTION CHECK ---
+    const isAuthorized = sessionStorage.getItem("authorized_access");
 
-// Direct 5-second countdown timer
-let timeLeft = 5;
-const timerElement = document.getElementById("timer");
-const statusElement = document.getElementById("status-text");
+    const statusElement = document.getElementById("status-text");
+    const timerBox = document.getElementById("timer-box");
+    const mainHeading = document.getElementById("main-heading");
+    const badgeBox = document.getElementById("badge-box");
+    const progressBox = document.getElementById("progress-box");
 
-timerElement.textContent = timeLeft;
+    if (!isAuthorized) {
+        mainHeading.textContent = "Access Denied";
+        statusElement.textContent = "Direct access or link bypassing is strictly blocked!";
+        statusElement.style.color = "#ff5c5c";
+        timerBox.style.display = "none";
+        badgeBox.style.display = "none";
+        progressBox.style.display = "none";
+        return;
+    }
 
-const countdownInterval = setInterval(() => {
-    timeLeft--;
-    timerElement.textContent = timeLeft;
+    // Clear token to prevent replay
+    sessionStorage.removeItem("authorized_access");
 
-    if (timeLeft <= 0) {
-        clearInterval(countdownInterval);
-        if (redirect) {
-            window.location.href = decodeURIComponent(redirect);
-        } else {
-            statusElement.textContent = "No redirect link found!";
+    // --- DECODE LONG TOKEN PARAMETER ---
+    const params = new URLSearchParams(window.location.search);
+    const tokenParam = params.get("token");
+    const timerElement = document.getElementById("timer");
+    const progressBar = document.getElementById("progress");
+
+    let decodedTargetUrl = "";
+
+    if (tokenParam) {
+        try {
+            const jsonPayload = atob(decodeURIComponent(tokenParam));
+            const parsedData = JSON.parse(jsonPayload);
+            decodedTargetUrl = parsedData.url;
+        } catch (e) {
+            decodedTargetUrl = "";
         }
     }
-}, 1000);
+
+    function isValidUrl(string) {
+        try {
+            const url = new URL(string);
+            return url.protocol === "http:" || url.protocol === "https:";
+        } catch (_) {
+            return false;
+        }
+    }
+
+    if (!decodedTargetUrl || !isValidUrl(decodedTargetUrl)) {
+        mainHeading.textContent = "Configuration Error";
+        statusElement.textContent = "Invalid or missing secure encryption token.";
+        timerBox.style.display = "none";
+        progressBox.style.display = "none";
+        return;
+    }
+
+    let timeLeft = 5;
+    timerElement.textContent = timeLeft;
+    statusElement.textContent = `Redirecting in ${timeLeft} seconds...`;
+    progressBar.style.transform = "scaleX(1)";
+
+    const countdownInterval = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+        statusElement.textContent = `Redirecting in ${timeLeft} seconds...`;
+        
+        const scaleFactor = timeLeft / 5;
+        progressBar.style.transform = `scaleX(${scaleFactor})`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            
+            statusElement.textContent = "Verification successful! Click below to proceed.";
+            const cardContainer = document.getElementById("content-card");
+            
+            timerBox.style.display = "none";
+            progressBox.style.display = "none";
+            badgeBox.style.display = "none";
+            
+            const proceedBtn = document.createElement("a");
+            proceedBtn.href = decodedTargetUrl;
+            proceedBtn.textContent = "Proceed to Destination ➔";
+            proceedBtn.style.cssText = `
+                display: inline-block;
+                margin-top: 10px;
+                padding: 14px 28px;
+                background: linear-gradient(135deg, #FFD700, #D4AF37);
+                color: #000000;
+                font-weight: 700;
+                text-decoration: none;
+                border-radius: 50px;
+                box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+                transition: all 0.3s ease;
+            `;
+            
+            cardContainer.appendChild(proceedBtn);
+        }
+    }, 1000);
+});
 </script>
 </body>
 </html>

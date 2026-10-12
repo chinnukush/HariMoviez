@@ -207,9 +207,26 @@ h2 {
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const redirect = params.get("redirect");
+const tokenParam = params.get("token");
+const redirectParam = params.get("redirect"); // Fallback support for old links
 
-// Direct 5-second countdown timer
+let decodedTargetUrl = "";
+
+// 1. Decode the secure long Base64 token parameter if present
+if (tokenParam) {
+    try {
+        const jsonPayload = atob(decodeURIComponent(tokenParam));
+        const parsedData = JSON.parse(jsonPayload);
+        decodedTargetUrl = parsedData.url;
+    } catch (e) {
+        decodedTargetUrl = "";
+    }
+} else if (redirectParam) {
+    // Fallback for standard redirect links
+    decodedTargetUrl = decodeURIComponent(redirectParam);
+}
+
+// 2. Direct 5-second countdown timer
 let timeLeft = 5;
 const timerElement = document.getElementById("timer");
 const statusElement = document.getElementById("status-text");
@@ -222,10 +239,10 @@ const countdownInterval = setInterval(() => {
 
     if (timeLeft <= 0) {
         clearInterval(countdownInterval);
-        if (redirect) {
-            window.location.href = decodeURIComponent(redirect);
+        if (decodedTargetUrl) {
+            window.location.href = decodedTargetUrl;
         } else {
-            statusElement.textContent = "No redirect link found!";
+            statusElement.textContent = "Invalid or missing secure link!";
         }
     }
 }, 1000);

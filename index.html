@@ -206,27 +206,43 @@ h2 {
 </div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const tokenParam = params.get("token");
-const redirectParam = params.get("redirect"); // Fallback support for old links
+function getTargetUrl() {
+    const path = window.location.pathname;
+    const searchParams = new URLSearchParams(window.location.search);
+    
+    // Check if link uses path token format (/token/__USERID__/TOKEN)
+    const pathParts = path.split('/');
+    let rawToken = pathParts[pathParts.length - 1];
 
-let decodedTargetUrl = "";
-
-// 1. Decode the secure long Base64 token parameter if present
-if (tokenParam) {
-    try {
-        const jsonPayload = atob(decodeURIComponent(tokenParam));
-        const parsedData = JSON.parse(jsonPayload);
-        decodedTargetUrl = parsedData.url;
-    } catch (e) {
-        decodedTargetUrl = "";
+    // Fallback to query parameter (?token=... or ?redirect=...)
+    if (!rawToken || rawToken === "" || rawToken === "index.html") {
+        rawToken = searchParams.get("token") || searchParams.get("redirect");
     }
-} else if (redirectParam) {
-    // Fallback for standard redirect links
-    decodedTargetUrl = decodeURIComponent(redirectParam);
+
+    if (!rawToken) return null;
+
+    try {
+        // Convert URL-safe Base64 back to normal Base64
+        let base64 = rawToken.replace(/-/g, '+').replace(/_/g, '/');
+        while (base64.length % 4) {
+            base64 += '=';
+        }
+        
+        const decodedJson = atob(base64);
+        const parsed = JSON.parse(decodedJson);
+        return parsed.url || null;
+    } catch (e) {
+        // Fallback in case raw redirect URL was passed
+        try {
+            return decodeURIComponent(rawToken);
+        } catch (_) {
+            return null;
+        }
+    }
 }
 
-// 2. Direct 5-second countdown timer
+const decodedTargetUrl = getTargetUrl();
+
 let timeLeft = 5;
 const timerElement = document.getElementById("timer");
 const statusElement = document.getElementById("status-text");
@@ -239,10 +255,10 @@ const countdownInterval = setInterval(() => {
 
     if (timeLeft <= 0) {
         clearInterval(countdownInterval);
-        if (decodedTargetUrl) {
+        if (decodedTargetUrl && (decodedTargetUrl.startsWith("http://") || decodedTargetUrl.startsWith("https://"))) {
             window.location.href = decodedTargetUrl;
         } else {
-            statusElement.textContent = "Invalid or missing secure link!";
+            statusElement.textContent = "Invalid or missing secure token!";
         }
     }
 }, 1000);
